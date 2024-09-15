@@ -149,6 +149,13 @@ p {
         max-width: 100%;
     }
 }
+
+/* Container styling */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
     </style>
 </head>
 <body>
@@ -158,15 +165,7 @@ p {
         <div style""<h1>Athar Hafiz</h1></div>
         <div><h3>CVs and Resumes<h3></div>
 
-          <!-- Initial Gallery Section -->
-          <h2>Gallery</h2>
-          <div class="gallery">
-              <img src="image1.jpg" alt="Image 1" tabindex="0">
-              <img src="image2.jpg" alt="Image 2" tabindex="0">
-              <img src="image3.jpg" alt="Image 3" tabindex="0">
-              <img src="image4.jpg" alt="Image 4" tabindex="0">
-              <img src="image5.jpg" alt="Image 5" tabindex="0">
-          </div>
+
 
         <!-- CV and Resume Links -->
         <div id="list">
@@ -186,6 +185,17 @@ p {
         <button id="backButton" style="display:none;" onclick="showList()">Back to List</button>
     </div>
 
+    <!-- Initial Gallery Section -->
+    <h2>Gallery</h2>
+      <div class="container">
+    <div class="gallery">
+        <img src="image1.jpg" alt="Image 1" tabindex="0">
+        <img src="image2.jpg" alt="Image 2" tabindex="0">
+        <img src="image3.jpg" alt="Image 3" tabindex="0">
+        <img src="image4.jpg" alt="Image 4" tabindex="0">
+        <img src="image5.jpg" alt="Image 5" tabindex="0">
+    </div>
+      </div>
     <!-- Random Theme Toggle Button -->
     <button id="randomThemeToggle" class="flash">Thema</button>
 
