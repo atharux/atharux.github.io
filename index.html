@@ -6,16 +6,256 @@
     <title>Athar Hafiz - CVs and Resumes</title>
     <link rel="stylesheet" href="custom-styles.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+    /* General body styling */
+          body {
+              background-color: #121212; /* Dark theme by default */
+              color: #e0e0e0; /* Light grey text */
+              font-family: 'Arial Narrow', sans-serif; /* Condensed sans-serif */
+              line-height: 1.6;
+              margin: 0;
+              padding: 0;
+              transition: background-color 0.3s ease, color 0.3s ease;
+          }
+
+          /* Light theme */
+          body.light-theme {
+              background-color: #f0f0f0;
+              color: #333333;
+          }
+
+          /* Atom-like theme */
+          body.atom-theme {
+              background-color: #1d1f21;
+              color: #c5c8c6;
+          }
+
+          /* H1 styling */
+          h1 {
+              font-size: 45pt;
+              font-weight: bold;
+              color: #ffffff;
+              text-align: center;
+              margin: 40px 0;
+          }
+
+          body.light-theme h1 {
+              color: #333333;
+          }
+
+          body.atom-theme h1 {
+              color: #81a2be;
+          }
+
+          /* Sticky menu styling */
+          .sticky-menu {
+              position: sticky;
+              top: 0;
+              z-index: 1000;
+              background-color: rgba(0, 0, 0, 0.8); /* Dark transparent background */
+              color: white;
+              padding: 10px;
+              display: flex;
+              justify-content: center;
+              transition: opacity 0.5s ease-in-out;
+          }
+
+          .sticky-menu.hidden {
+              opacity: 0;
+          }
+
+          .sticky-menu.visible {
+              opacity: 1;
+          }
+
+          /* Theme Radio Button Styling inside sticky menu */
+          .theme-selection {
+              display: flex;
+              justify-content: center;
+          }
+
+          .theme-selection label {
+              margin: 0 20px;
+              font-size: 16pt;
+              cursor: pointer;
+          }
+
+          .theme-selection input {
+              margin-right: 10px;
+          }
+
+          /* General container for content */
+          .container {
+              max-width: 1200px;
+              width: 90%;
+              margin: 0 auto;
+              padding: 20px;
+          }
+
+          /* Single column section */
+          section {
+              margin-bottom: 40px;
+          }
+
+          .section-title {
+              font-size: 35pt;
+              font-weight: bold;
+              margin-bottom: 20px;
+          }
+
+          p {
+              font-size: 18pt;
+              font-weight: 300;
+              color: #b0b0b0;
+              margin-bottom: 20px;
+          }
+
+          .image-placeholder {
+              background-color: #333;
+              width: 100%;
+              height: 300px;
+              margin-bottom: 20px;
+          }
+
+          .image-placeholder img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+          }
+
+          /* Two column layout for larger screens */
+          .two-column {
+              display: flex;
+              gap: 20px;
+          }
+
+          .two-column .column {
+              flex: 1;
+          }
+
+          .two-column img {
+              width: 100%;
+              height: auto;
+          }
+
+          /* Responsive adjustments */
+          @media (max-width: 768px) {
+              /* Reduce font sizes for mobile */
+              h1 {
+                  font-size: 35pt;
+              }
+
+              .section-title {
+                  font-size: 28pt;
+              }
+
+              p {
+                  font-size: 14pt;
+              }
+
+              /* Stack columns on smaller screens */
+              .two-column {
+                  flex-direction: column;
+              }
+
+              /* Adjust image sizes */
+              .image-placeholder {
+                  height: 200px;
+              }
+          }
+
+          @media (max-width: 480px) {
+              /* Further reduce font sizes for very small screens */
+              h1 {
+                  font-size: 30pt;
+              }
+
+              .section-title {
+                  font-size: 24pt;
+              }
+
+              p {
+                  font-size: 12pt;
+              }
+
+              .theme-selection label {
+                  font-size: 12pt;
+              }
+
+              /* Adjust image sizes */
+              .image-placeholder {
+                  height: 150px;
+              }
+          }
+
+
+
+
+
+
+
+
+
+        /* Style for the gallery */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        /* Hover effect */
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        /* Selected state */
+        .gallery img:focus {
+            outline: 3px solid #007BFF;
+            transform: scale(1.1);
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .gallery img {
+                max-width: 48%;
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery img {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+  <!-- Gallery Section -->
+  <h2>My Work</h2>
+  <div class="gallery">
+      <img src="image1.jpg" alt="Image 1" tabindex="0">
+      <img src="image2.jpg" alt="Image 2" tabindex="0">
+      <img src="image3.jpg" alt="Image 3" tabindex="0">
+      <img src="image4.jpg" alt="Image 4" tabindex="0">
+      <img src="image5.jpg" alt="Image 5" tabindex="0">
+  </div>
     <button id="darkModeToggle">Toggle Dark Mode</button>
     <h1>Athar Hafiz - CVs and Resumes</h1>
     <div id="list">
         <ul>
+            <h3>Email Marketing Manager</h3>
             <li><a href="#" onclick="loadMarkdown('email-marketing-manager-resume.md')">Email Marketing Manager Resume</a></li>
             <li><a href="#" onclick="loadMarkdown('email-marketing-manager-cv.md')">Email Marketing Manager CV</a></li>
+            <h3>Product/UX Designer</h3>
             <li><a href="#" onclick="loadMarkdown('product-ux-designer-resume.md')">Product/UX Designer Resume</a></li>
             <li><a href="#" onclick="loadMarkdown('product-ux-designer-cv.md')">Product/UX Designer CV</a></li>
+            <h3>Product Manager</h3>
             <li><a href="#" onclick="loadMarkdown('product-manager-resume.md')">Product Manager Resume</a></li>
             <li><a href="#" onclick="loadMarkdown('product-manager-cv.md')">Product Manager CV</a></li>
         </ul>
@@ -53,6 +293,8 @@
         if (localStorage.getItem('darkMode') === 'true') {
             body.classList.add('dark-mode');
         }
+
+
     </script>
 </body>
 </html>
