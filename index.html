@@ -33,19 +33,15 @@
     }
 
     body {
-  background-color: #121212; /* Default dark theme */
-  color: #e0e0e0;
-  font-family: 'Arial Narrow', sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  flex-direction: column;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  text-align: center; /* Center text for body */
+      background-color: #121212;
+                color: #e0e0e0;
+                font-family: 'Arial Narrow', sans-serif;
+                display: flex;
+                justify-content: center; /* Centers content horizontally */
+                align-items: center;    /* Centers content vertically */
+                height: 100vh; /* Full viewport height */
+                overflow-y: scroll; /* Enables vertical scrolling */
+                margin: 0;
 }
 
 /* Bullet points styling */
@@ -169,8 +165,8 @@ body.pale-pink-navy-theme {
 
 /* Container styling */
 .container {
-    max-width: 1200px;
-    width: 100%;
+    max-width: 800px;
+    width: 90%;
     padding: 20px;
 }
     </style>
