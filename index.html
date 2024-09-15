@@ -5,21 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Athar Hafiz - CVs and Resumes</title>
     <link rel="stylesheet" href="custom-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
-        /* Center everything on the page */
+        /* Style for the gallery */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        /* Hover effect */
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        /* Selected state */
+        .gallery img:focus {
+            outline: 3px solid #007BFF;
+            transform: scale(1.1);
+        }
         body {
-            background-color: var(--bg-color, #121212); /* Dark theme by default */
-            color: var(--text-color, #e0e0e0); /* Light grey text */
-            font-family: 'Arial Narrow', sans-serif;
+            background-color: #121212; /* Dark theme by default */
+            color: #e0e0e0; /* Light grey text */
+            font-family: 'Arial Narrow', sans-serif; /* Condensed sans-serif */
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
             transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light theme */
+        body.light-theme {
+            background-color: #f0f0f0;
+            color: #333333;
+        }
+
+        /* Atom-like theme */
+        body.atom-theme {
+            background-color: #1d1f21;
+            color: #c5c8c6;
+        }
+
+        /* H1 styling */
+        h1 {
+            font-size: 45pt;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        body.light-theme h1 {
+            color: #333333;
+        }
+
+        body.atom-theme h1 {
+            color: #81a2be;
         }
 
         /* Sticky menu styling */
@@ -31,167 +80,310 @@
             color: white;
             padding: 10px;
             display: flex;
+              justify-content: center;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .sticky-menu.hidden {
+            opacity: 0;
+        }
+
+        .sticky-menu.visible {
+            opacity: 1;
+        }
+
+        /* Theme Radio Button Styling inside sticky menu */
+        .theme-selection {
+            display: flex;
             justify-content: center;
         }
 
-        /* Segmented button styles */
-        .segmented-button {
-            display: flex;
-            border-radius: 10px;
-            overflow: hidden;
-            background-color: var(--subtle-color, #333);
-            border: 1px solid var(--border-color, #555);
-            margin-bottom: 10px;
-        }
-
-        .segmented-button button {
-            padding: 10px 20px;
-            border: none;
-            background: none;
-            color: var(--text-color, #e0e0e0);
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .segmented-button button:hover {
-            background-color: var(--special-bg-color, #555);
-        }
-
-        .segmented-button button.active {
-            background-color: var(--special-bg-color, #333);
-            color: var(--special-text-color, #fff);
-        }
-
-        /* Minimal slider styling */
-        .slider-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 10px 0;
-        }
-
-        .slider {
-            -webkit-appearance: none;
-            width: 200px;
-            height: 8px;
-            background: var(--border-color, #555);
-            border-radius: 10px;
-            outline: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--special-bg-color, #333);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .slider::-moz-range-thumb {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--special-bg-color, #333);
+        .theme-selection label {
+            margin: 0 20px;
+            font-size: 16pt;
             cursor: pointer;
         }
 
-        /* Theme-specific variables */
-        :root {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --subtle-color: #333;
-            --border-color: #555;
-            --special-bg-color: #555;
-            --special-text-color: #fff;
+        .theme-selection input {
+            margin-right: 10px;
         }
 
-        /* Light Theme */
-        .light-theme {
-            --bg-color: #f0f0f0;
-            --text-color: #333;
-            --subtle-color: #ddd;
-            --border-color: #bbb;
-            --special-bg-color: #999;
-            --special-text-color: #000;
-        }
-
-        /* Purple Theme */
-        .purple-theme {
-            --bg-color: rgba(255, 255, 255, 1);
-            --text-color: rgba(156, 91, 159, 1);
-            --subtle-color: rgba(251, 249, 251, 1);
-            --border-color: rgba(222, 199, 223, 1);
-            --special-bg-color: rgba(162, 102, 187, 1);
-            --special-text-color: rgba(255, 255, 255, 1);
-        }
-
-        /* Main container styling */
+        /* General container for content */
         .container {
             max-width: 1200px;
-            width: 100%;
+            width: 90%;
+            margin: 0 auto;
             padding: 20px;
-            filter: saturate(1); /* Default saturation level */
+        }
+
+        /* Single column section */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 35pt;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18pt;
+            font-weight: 300;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        .image-placeholder {
+            background-color: #333;
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Two column layout for larger screens */
+        .two-column {
+            display: flex;
+            gap: 20px;
+        }
+
+        .two-column .column {
+            flex: 1;
+        }
+
+        .two-column img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            /* Reduce font sizes for mobile */
+            h1 {
+                font-size: 35pt;
+            }
+
+            .section-title {
+                font-size: 28pt;
+            }
+
+            p {
+                font-size: 14pt;
+            }
+
+            /* Stack columns on smaller screens */
+            .two-column {
+                flex-direction: column;
+            }
+
+            /* Adjust image sizes */
+            .image-placeholder {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Further reduce font sizes for very small screens */
+            h1 {
+                font-size: 30pt;
+            }
+
+            .section-title {
+                font-size: 24pt;
+            }
+
+            p {
+                font-size: 12pt;
+            }
+
+            .theme-selection label {
+                font-size: 12pt;
+            }
+
+            /* Adjust image sizes */
+            .image-placeholder {
+                height: 150px;
+            }
+        }
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .gallery img {
+                max-width: 48%;
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery img {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Sticky Menu -->
-    <div id="stickyMenu" class="sticky-menu">
-        <div class="segmented-button">
-            <button id="darkMode" class="active" onclick="switchTheme('dark')">Dark Mode</button>
-            <button id="lightMode" onclick="switchTheme('light')">Light Mode</button>
-            <button id="purpleMode" onclick="switchTheme('purple')">Purple Mode</button>
-        </div>
 
-        <!-- Saturation Slider -->
-        <div class="slider-container">
-            <label for="saturationSlider">Saturation</label>
-            <input type="range" min="0" max="2" value="1" step="0.1" class="slider" id="saturationSlider">
-        </div>
+
+  <!-- Sticky Menu -->
+  <div id="stickyMenu" class="sticky-menu">
+      <!-- Theme Radio Button Selection -->
+      <div class="theme-selection">
+          <label><input type="radio" name="theme" value="dark" checked> Dark Theme</label>
+          <label><input type="radio" name="theme" value="light"> Light Theme</label>
+          <label><input type="radio" name="theme" value="atom"> Atom Theme</label>
+      </div>
+  </div>
+  <!-- Main container -->
+   <div class="container">
+       <!-- Page Title (Hero section) -->
+       <h1>Museum Exhibit</h1>
+
+       <!-- Single column section with heading and text -->
+       <section>
+           <div class="section-title">Exhibit Overview</div>
+           <p>
+               Welcome to THE ATHAR UX exhibit where you can explore ancient artifacts and modern-day marvels in a carefully curated collection.
+           </p>
+
+
+
+  <!-- Gallery Section -->
+  <h2>Gallery</h2>
+  <div class="gallery">
+      <img src="image1.jpg" alt="Image 1" tabindex="0">
+      <img src="image2.jpg" alt="Image 2" tabindex="0">
+      <img src="image3.jpg" alt="Image 3" tabindex="0">
+      <img src="image4.jpg" alt="Image 4" tabindex="0">
+      <img src="image5.jpg" alt="Image 5" tabindex="0">
+  </div>
+
+       </section>
+
+    <button id="darkModeToggle">Toggle Dark Mode</button>
+    <h1>Athar Hafiz - CVs and Resumes</h1>
+    <div id="list">
+        <ul>
+            <h3>Email Marketing Manager</h3>
+            <li><a href="#" onclick="loadMarkdown('email-marketing-manager-resume.md')">Email Marketing Manager Resume</a></li>
+            <li><a href="#" onclick="loadMarkdown('email-marketing-manager-cv.md')">Email Marketing Manager CV</a></li>
+            <h3>Product /UX Designer</h3>
+            <li><a href="#" onclick="loadMarkdown('product-ux-designer-resume.md')">Product/UX Designer Resume</a></li>
+            <li><a href="#" onclick="loadMarkdown('product-ux-designer-cv.md')">Product/UX Designer CV</a></li>
+            <h3>Product Manager</h3>
+            <li><a href="#" onclick="loadMarkdown('product-manager-resume.md')">Product Manager Resume</a></li>
+            <li><a href="#" onclick="loadMarkdown('product-manager-cv.md')">Product Manager CV</a></li>
+        </ul>
     </div>
+    <div id="content" style="display:none;"></div>
+    <button id="backButton" style="display:none;" onclick="showList()">Back to List</button>
 
-    <!-- Main container -->
-    <div class="container" id="mainContainer">
-        <h1>Athar Hafiz - CVs and Resumes</h1>
-        <!-- Content Here -->
+
+        <!-- Two column section with image placeholders and text -->
+        <section class="two-column">
+            <div class="column">
+                <div class="image-placeholder">
+                    <img src="https://via.placeholder.com/600x300" alt="Exhibit Image 1">
+                </div>
+                <h2>Artifact 1</h2>
+                <p>
+                    This artifact dates back to the early 14th century, reflecting the craftsmanship and design elements of the time.
+                </p>
+            </div>
+            <div class="column">
+                <div class="image-placeholder">
+                    <img src="https://via.placeholder.com/600x300" alt="Exhibit Image 2">
+                </div>
+                <h2>Artifact 2</h2>
+                <p>
+                    A stunning example of modern-day innovation, this piece showcases the intersection of art and technology.
+                </p>
+            </div>
+        </section>
+
+        <!-- Single column section with more content -->
+        <section>
+            <div class="section-title">Historical Significance</div>
+            <p>
+                Each artifact in this exhibit tells a story, whether it's a glimpse into ancient civilizations or a look forward to what lies ahead.
+            </p>
+            <div class="image-placeholder">
+                <img src="https://via.placeholder.com/1200x300" alt="Exhibit Wide Image">
+            </div>
+        </section>
     </div>
 
     <script>
-        function switchTheme(theme) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.segmented-button button').forEach(button => {
-                button.classList.remove('active');
-            });
 
-            // Add active class to the clicked button
-            document.getElementById(theme + 'Mode').classList.add('active');
-
-            // Switch theme by changing body class
-            document.body.classList.remove('dark-theme', 'light-theme', 'purple-theme');
-            if (theme === 'dark') {
-                document.body.classList.add('dark-theme');
-            } else if (theme === 'light') {
-                document.body.classList.add('light-theme');
-            } else if (theme === 'purple') {
-                document.body.classList.add('purple-theme');
-            }
+        function loadMarkdown(file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('content').innerHTML = marked.parse(text);
+                    document.getElementById('list').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                    document.getElementById('backButton').style.display = 'block';
+                });
         }
 
-        // Default theme is Dark
-        switchTheme('dark');
+        function showList() {
+            document.getElementById('list').style.display = 'block';
+            document.getElementById('content').style.display = 'none';
+            document.getElementById('backButton').style.display = 'none';
+        }
 
-        // Handle saturation slider
-        const saturationSlider = document.getElementById('saturationSlider');
-        const container = document.getElementById('mainContainer');
 
-        saturationSlider.addEventListener('input', function() {
-            container.style.filter = `saturate(${saturationSlider.value})`;
-        });
+
+                // Add event listener for scroll
+                window.addEventListener('scroll', () => {
+                    // Make the menu visible while scrolling
+                    stickyMenu.classList.add('visible');
+                    stickyMenu.classList.remove('hidden');
+
+                    // Hide the menu after 4 seconds of inactivity
+                    hideMenuAfterDelay();
+                });
+
+                // Initially hide the menu after 4 seconds (if no scroll happens)
+                hideMenuAfterDelay();
+
+
+
+                    function switchTheme(theme) {
+                        // Remove active class from all buttons
+                        document.querySelectorAll('.segmented-button button').forEach(button => {
+                            button.classList.remove('active');
+                        });
+
+                        // Add active class to the clicked button
+                        document.getElementById(theme + 'Mode').classList.add('active');
+
+                        // Switch theme by changing body class
+                        document.body.classList.remove('dark-theme', 'light-theme', 'purple-theme');
+                        if (theme === 'dark') {
+                            document.body.classList.add('dark-theme');
+                        } else if (theme === 'light') {
+                            document.body.classList.add('light-theme');
+                        } else if (theme === 'purple') {
+                            document.body.classList.add('purple-theme');
+                        }
+                    }
+
+                    // Default theme is Dark
+                    switchTheme('dark');
+
+                    // Handle saturation slider
+                    const saturationSlider = document.getElementById('saturationSlider');
+                    const container = document.getElementById('mainContainer');
+
+                    saturationSlider.addEventListener('input', function() {
+                        container.style.filter = `saturate(${saturationSlider.value})`;
+                    });
+                </script>
+
     </script>
 </body>
 </html>
