@@ -109,7 +109,45 @@ p {
   font-size: 18pt;
   margin-bottom: 20px;
 }
+/* Gallery styling */
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
+.gallery img {
+    width: 100%;
+    max-width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery img:focus {
+    outline: 3px solid #007BFF;
+    transform: scale(1.1);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .gallery img {
+        max-width: 48%;
+    }
+}
+@media (max-width: 480px) {
+    .gallery img {
+        max-width: 100%;
+    }
+}
     </style>
 </head>
 <body>
@@ -118,6 +156,17 @@ p {
     <div class="container">
         <div style""<h1>Athar Hafiz</h1></div>
         <div><h3>CVs and Resumes<h3></div>
+
+          <!-- Initial Gallery Section -->
+          <h2>Gallery</h2>
+          <div class="gallery">
+              <img src="image1.jpg" alt="Image 1" tabindex="0">
+              <img src="image2.jpg" alt="Image 2" tabindex="0">
+              <img src="image3.jpg" alt="Image 3" tabindex="0">
+              <img src="image4.jpg" alt="Image 4" tabindex="0">
+              <img src="image5.jpg" alt="Image 5" tabindex="0">
+          </div>
+
         <!-- CV and Resume Links -->
         <div id="list">
             <ul>
