@@ -6,7 +6,110 @@
     <title>Athar Hafiz - CVs and Resumes</title>
     <link rel="stylesheet" href="custom-styles.css">
     <style>
-        /* Include the updated CSS from above here */
+    body {
+  background-color: #121212; /* Default dark theme */
+  color: #e0e0e0;
+  font-family: 'Arial Narrow', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center; /* Center text for body */
+}
+
+/* Bullet points styling */
+ul {
+  list-style: disc;
+  padding-left: 20px; /* Indentation for bullets */
+  text-align: left; /* Align bullet points to the left */
+  display: inline-block; /* Ensure bullets align properly within centered container */
+  margin: 0 auto; /* Center the list within the container */
+}
+
+/* Light theme */
+body.light-theme {
+  background-color: #f0f0f0;
+  color: #333333;
+}
+
+/* Mint Green & Coral Theme */
+body.mint-green-theme {
+  background-color: #2ecc71;
+  color: #ff6f61;
+}
+
+/* Lavender & Peach Theme */
+body.lavender-peach-theme {
+  background-color: #b388eb;
+  color: #ffcba4;
+}
+
+/* Slate & Orange Theme */
+body.slate-orange-theme {
+  background-color: #4a5568;
+  color: #f6ad55;
+}
+
+/* Pale Pink & Navy Theme */
+body.pale-pink-navy-theme {
+  background-color: #f2d1d1;
+  color: #2c3e50;
+}
+
+/* Floating button styling */
+#randomThemeToggle {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Neon effect and flashing animation */
+@keyframes neon-flash {
+  0%, 100% {
+      box-shadow: 0 0 10px rgba(255, 20, 147, 0.6), 0 0 20px rgba(255, 20, 147, 0.4),
+                  0 0 30px rgba(255, 20, 147, 0.2), 0 0 40px rgba(255, 20, 147, 0.1);
+      background-color: #ff1493;
+  }
+  50% {
+      box-shadow: 0 0 5px rgba(255, 20, 147, 0.2), 0 0 10px rgba(255, 20, 147, 0.1),
+                  0 0 15px rgba(255, 20, 147, 0.05);
+      background-color: #007BFF;
+  }
+}
+
+#randomThemeToggle.flash {
+  animation: neon-flash 3.5s infinite;
+}
+
+h1 {
+  font-size: 45pt;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.container {
+  text-align: center;
+}
+
+p {
+  font-size: 18pt;
+  margin-bottom: 20px;
+}
+
     </style>
 </head>
 <body>
