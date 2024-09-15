@@ -237,6 +237,16 @@
 </head>
 <body>
   <!-- Gallery Section -->
+  <!-- Sticky Menu -->
+  <div id="stickyMenu" class="sticky-menu">
+      <!-- Theme Radio Button Selection -->
+      <div class="theme-selection">
+          <label><input type="radio" name="theme" value="dark" checked> Dark Theme</label>
+          <label><input type="radio" name="theme" value="light"> Light Theme</label>
+          <label><input type="radio" name="theme" value="atom"> Atom Theme</label>
+      </div>
+  </div>
+
   <h2>My Work</h2>
   <div class="gallery">
       <img src="image1.jpg" alt="Image 1" tabindex="0">
@@ -262,6 +272,100 @@
     </div>
     <div id="content" style="display:none;"></div>
     <button id="backButton" style="display:none;" onclick="showList()">Back to List</button>
+    <!-- Main container -->
+  <div class="container">
+      <!-- Page Title (Hero section) -->
+      <h1>Museum Exhibit</h1>
+
+      <!-- Single column section with heading and text -->
+      <section>
+          <div class="section-title">Exhibit Overview</div>
+          <p>
+              Welcome to the dark theme exhibit where you can explore ancient artifacts and modern-day marvels in a carefully curated collection.
+          </p>
+      </section>
+
+      <!-- Two column section with image placeholders and text -->
+      <section class="two-column">
+          <div class="column">
+              <div class="image-placeholder">
+                  <img src="https://via.placeholder.com/600x300" alt="Exhibit Image 1">
+              </div>
+              <h2>Artifact 1</h2>
+              <p>
+                  This artifact dates back to the early 14th century, reflecting the craftsmanship and design elements of the time.
+              </p>
+          </div>
+          <div class="column">
+              <div class="image-placeholder">
+                  <img src="https://via.placeholder.com/600x300" alt="Exhibit Image 2">
+              </div>
+              <h2>Artifact 2</h2>
+              <p>
+                  A stunning example of modern-day innovation, this piece showcases the intersection of art and technology.
+              </p>
+          </div>
+      </section>
+
+      <!-- Single column section with more content -->
+      <section>
+          <div class="section-title">Historical Significance</div>
+          <p>
+              Each artifact in this exhibit tells a story, whether it's a glimpse into ancient civilizations or a look forward to what lies ahead.
+          </p>
+          <div class="image-placeholder">
+              <img src="https://via.placeholder.com/1200x300" alt="Exhibit Wide Image">
+          </div>
+      </section>
+  </div>
+
+  <script>
+      // Get all radio buttons
+      const themeRadioButtons = document.querySelectorAll('input[name="theme"]');
+
+      // Function to change theme
+      function changeTheme(theme) {
+          document.body.classList.remove('dark-theme', 'light-theme', 'atom-theme');
+          document.body.classList.add(`${theme}-theme`);
+      }
+
+      // Add event listeners to radio buttons
+      themeRadioButtons.forEach(radio => {
+          radio.addEventListener('change', (event) => {
+              changeTheme(event.target.value);
+          });
+      });
+
+      // Sticky Menu Scroll Behavior
+      const stickyMenu = document.getElementById('stickyMenu');
+      let isScrolling;
+
+      // Show the menu initially
+      stickyMenu.classList.add('visible');
+
+      // Function to hide menu after 4 seconds of inactivity
+      function hideMenuAfterDelay() {
+          if (isScrolling) clearTimeout(isScrolling);
+          isScrolling = setTimeout(() => {
+              stickyMenu.classList.remove('visible');
+              stickyMenu.classList.add('hidden');
+          }, 4000); // 4-second delay
+      }
+
+      // Add event listener for scroll
+      window.addEventListener('scroll', () => {
+          // Make the menu visible while scrolling
+          stickyMenu.classList.add('visible');
+          stickyMenu.classList.remove('hidden');
+
+          // Hide the menu after 4 seconds of inactivity
+          hideMenuAfterDelay();
+      });
+
+      // Initially hide the menu after 4 seconds (if no scroll happens)
+      hideMenuAfterDelay();
+  </script>
+
     <script>
         function loadMarkdown(file) {
             fetch(file)
