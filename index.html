@@ -32,7 +32,185 @@
             outline: 3px solid #007BFF;
             transform: scale(1.1);
         }
+        body {
+            background-color: #121212; /* Dark theme by default */
+            color: #e0e0e0; /* Light grey text */
+            font-family: 'Arial Narrow', sans-serif; /* Condensed sans-serif */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
+        /* Light theme */
+        body.light-theme {
+            background-color: #f0f0f0;
+            color: #333333;
+        }
+
+        /* Atom-like theme */
+        body.atom-theme {
+            background-color: #1d1f21;
+            color: #c5c8c6;
+        }
+
+        /* H1 styling */
+        h1 {
+            font-size: 45pt;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        body.light-theme h1 {
+            color: #333333;
+        }
+
+        body.atom-theme h1 {
+            color: #81a2be;
+        }
+
+        /* Sticky menu styling */
+        .sticky-menu {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark transparent background */
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .sticky-menu.hidden {
+            opacity: 0;
+        }
+
+        .sticky-menu.visible {
+            opacity: 1;
+        }
+
+        /* Theme Radio Button Styling inside sticky menu */
+        .theme-selection {
+            display: flex;
+            justify-content: center;
+        }
+
+        .theme-selection label {
+            margin: 0 20px;
+            font-size: 16pt;
+            cursor: pointer;
+        }
+
+        .theme-selection input {
+            margin-right: 10px;
+        }
+
+        /* General container for content */
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Single column section */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 35pt;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18pt;
+            font-weight: 300;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        .image-placeholder {
+            background-color: #333;
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Two column layout for larger screens */
+        .two-column {
+            display: flex;
+            gap: 20px;
+        }
+
+        .two-column .column {
+            flex: 1;
+        }
+
+        .two-column img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            /* Reduce font sizes for mobile */
+            h1 {
+                font-size: 35pt;
+            }
+
+            .section-title {
+                font-size: 28pt;
+            }
+
+            p {
+                font-size: 14pt;
+            }
+
+            /* Stack columns on smaller screens */
+            .two-column {
+                flex-direction: column;
+            }
+
+            /* Adjust image sizes */
+            .image-placeholder {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Further reduce font sizes for very small screens */
+            h1 {
+                font-size: 30pt;
+            }
+
+            .section-title {
+                font-size: 24pt;
+            }
+
+            p {
+                font-size: 12pt;
+            }
+
+            .theme-selection label {
+                font-size: 12pt;
+            }
+
+            /* Adjust image sizes */
+            .image-placeholder {
+                height: 150px;
+            }
+        }
         /* Responsive design for smaller screens */
         @media (max-width: 768px) {
             .gallery img {
