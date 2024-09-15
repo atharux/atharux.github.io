@@ -6,77 +6,7 @@
     <title>Athar Hafiz - CVs and Resumes</title>
     <link rel="stylesheet" href="custom-styles.css">
     <style>
-        /* Base styling for dark and light themes */
-        body {
-            background-color: #121212; /* Default dark theme */
-            color: #e0e0e0;
-            font-family: 'Arial Narrow', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Light theme styling */
-        body.light-theme {
-            background-color: #f0f0f0;
-            color: #333333;
-        }
-
-        /* Floating button styling */
-        #darkModeToggle {
-            position: fixed;
-            top: 50px;
-            right: 50px;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-            z-index: 1000;
-            transition: box-shadow 0.3s ease, background-color 0.3s ease;
-        }
-
-        /* Neon effect and flashing animation */
-        @keyframes neon-flash {
-            0%, 100% {
-                box-shadow: 0 0 10px rgba(255, 20, 147, 0.6), 0 0 20px rgba(255, 20, 147, 0.4),
-                            0 0 30px rgba(255, 20, 147, 0.2), 0 0 40px rgba(255, 20, 147, 0.1);
-                background-color: #ff1493;
-            }
-            50% {
-                box-shadow: 0 0 5px rgba(255, 20, 147, 0.2), 0 0 10px rgba(255, 20, 147, 0.1),
-                            0 0 15px rgba(255, 20, 147, 0.05);
-                background-color: #007BFF;
-            }
-        }
-
-        #darkModeToggle.flash {
-            animation: neon-flash 3.5s infinite;
-        }
-
-        /* Center alignment and spacing */
-        h1 {
-            font-size: 45pt;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .container {
-            text-align: center;
-        }
-
-        p {
-            font-size: 18pt;
-            margin-bottom: 20px;
-        }
+        /* Include the updated CSS from above here */
     </style>
 </head>
 <body>
@@ -103,16 +33,32 @@
         <button id="backButton" style="display:none;" onclick="showList()">Back to List</button>
     </div>
 
-    <!-- Dark Mode Toggle Button -->
-    <button id="darkModeToggle" class="flash">Toggle Dark Mode</button>
+    <!-- Random Theme Toggle Button -->
+    <button id="randomThemeToggle" class="flash">Toggle Random Theme</button>
 
     <script>
-        // Dark Mode Toggle Logic
-        const toggleButton = document.getElementById('darkModeToggle');
+        const toggleButton = document.getElementById('randomThemeToggle');
         const bodyElement = document.body;
 
+        // List of available themes
+        const themes = [
+            'light-theme',
+            'mint-green-theme',
+            'lavender-peach-theme',
+            'slate-orange-theme',
+            'pale-pink-navy-theme'
+        ];
+
+        // Toggle a random theme on button click
         toggleButton.addEventListener('click', function() {
-            bodyElement.classList.toggle('light-theme');
+            // Remove all existing themes
+            themes.forEach(theme => bodyElement.classList.remove(theme));
+
+            // Pick a random theme
+            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+
+            // Apply the random theme
+            bodyElement.classList.add(randomTheme);
         });
 
         // Functionality for loading markdown files
