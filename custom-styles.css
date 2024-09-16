@@ -7,14 +7,7 @@
     --content-bg: #ffffff;
     --content-shadow: rgba(0,0,0,0.1);
 }
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif; /* Headings */
-  color: #1f1f1f;
-}
 
-a:hover {
-    text-decoration: underline;
-}
 
 ul {
     padding-left: 20px;
