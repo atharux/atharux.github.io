@@ -54,8 +54,23 @@ body.lavender-breeze-theme {
   color: #4d4d4d;            /* Dark gray text */
 
 }
+/*--------------------------------- Candy Light theme */
+body.candy-light {
+  background-color: #fdf6f6; /* Soft pinkish-white background */
+  color: #4b4b4b; /* Dark gray text */
+}
 
+/* Sunny Day theme---------------------------- */
+body.sunny-day {
+  background-color: #fffacd; /* Light lemon chiffon background */
+  color: #333333; /* Dark text */
+}
 
+/* Minty Fresh theme ---------------------------------------*/
+body.minty-fresh {
+  background-color: #e7fff8; /* Light mint background */
+  color: #2e2e2e; /* Dark text */
+}
 
 /* Floating button styling */
 #randomThemeToggle {
@@ -140,7 +155,7 @@ body.lavender-breeze-theme {
 }
     </style>
 </head>
-<body>
+<body id="theme-body" class="sunny-day">>
 
     <!-- Main container -->
     <div id="container">
@@ -176,40 +191,24 @@ body.lavender-breeze-theme {
         </div>
     </div>
 
-    <!-- Random Theme Toggle Button -->
-    <button id="randomThemeToggle" class="flash">theme</button>
+    <!-- Theme Toggle Button -->
 
     <script>
-        const toggleButton = document.getElementById('randomThemeToggle');
-        const bodyElement = document.body;
 
-        // List of available themes
-        const themes = [
-            'light-theme',
-            'solarized-light-theme',
-            'monokai-theme',
-            'candy-light-theme',
-            'lavender-breeze-theme'
-        ];
+    function setTheme(theme) {
+      const body = document.getElementById('theme-body');
+      body.className = theme; // This removes the previous class and adds the new theme
+    }
+    </script>
 
-        // Toggle a random theme on button click
-        toggleButton.addEventListener('click', function() {
-            // Remove all existing themes
-            themes.forEach(theme => bodyElement.classList.remove(theme));
-
-            // Pick a random theme
-            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
-
-            // Apply the random theme
-            bodyElement.classList.add(randomTheme);
-        });
+    <!-- Example buttons to change themes -->
+    <button onclick="setTheme('candy-light')">Candy Light</button>
+    <button onclick="setTheme('sunny-day')">Sunny Day</button>
+    <button onclick="setTheme('minty-fresh')">Minty Fresh</button>
 
 
-        function showList() {
-            document.getElementById('list').style.display = 'block';
-            document.getElementById('content').style.display = 'none';
-            document.getElementById('backButton').style.display = 'none';
-        }
+
+
     </script>
 
 </body>
