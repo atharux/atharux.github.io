@@ -20,7 +20,7 @@ ul {
 body.light-theme {
   background-color: #fafafa; /* Light background */
     color: #383a42;           /* Dark gray/black text */
-
+    font-family: 'Fira Code', monospace;
 }
 
 /* Solarized Light theme */
@@ -30,6 +30,13 @@ body.solarized-light-theme {
   font-family: 'Fira Code', monospace;
 }
 
+h1, h2, h3, h4, h5, h6.solarized-light-theme {
+  color: #b58900; /* Gold for headers */
+}
+
+a.solarized-light-theme {
+  color: #268bd2; /* Soft blue links */
+}
 
 //* monokai-theme theme */
 body.monokai-theme {
@@ -38,39 +45,45 @@ body.monokai-theme {
   font-family: 'Fira Code', monospace;
 }
 
+h1, h2, h3, h4, h5, h6.monokai-theme {
+  color: #f92672; /* Pink headers */
+}
+
+a.monokai-theme {
+  color: #66d9ef; /* Light blue links */
+}
 
 /* Candy Light theme */
 body.candy-light-theme {
   background-color: #fdf6f6; /* Soft pinkish-white background */
   color: #4b4b4b;            /* Dark gray text */
-
+  font-family: 'Fira Code', monospace;
 }
 
+h1, h2, h3, h4, h5, h6.candy-light-theme {
+  color: #ff69b4; /* Hot pink headers */
+}
+
+a.candy-light-theme {
+  color: #ff4500; /* Vivid orange-red links */
+}
 
 
 /* Lavender Breeze theme */
-body.lavender-breeze-theme {
+body.lavender-breeze {
   background-color: #f5f5fd; /* Very light lavender background */
   color: #4d4d4d;            /* Dark gray text */
-
-}
-/*--------------------------------- Candy Light theme */
-body.candy-light {
-  background-color: #fdf6f6; /* Soft pinkish-white background */
-  color: #4b4b4b; /* Dark gray text */
+  font-family: 'Fira Code', monospace;
 }
 
-/* Sunny Day theme---------------------------- */
-body.sunny-day {
-  background-color: #fffacd; /* Light lemon chiffon background */
-  color: #333333; /* Dark text */
+h1, h2, h3, h4, h5, h6.lavender-breeze {
+  color: #9370db; /* Medium purple headers */
 }
 
-/* Minty Fresh theme ---------------------------------------*/
-body.minty-fresh {
-  background-color: #e7fff8; /* Light mint background */
-  color: #2e2e2e; /* Dark text */
+a.lavender-breeze {
+  color: #6a5acd; /* Slate blue links */
 }
+
 
 /* Floating button styling */
 #randomThemeToggle {
@@ -155,7 +168,7 @@ body.minty-fresh {
 }
     </style>
 </head>
-<body id="theme-body" class="sunny-day">>
+<body>
 
     <!-- Main container -->
     <div id="container">
@@ -191,24 +204,40 @@ body.minty-fresh {
         </div>
     </div>
 
-    <!-- Theme Toggle Button -->
+    <!-- Random Theme Toggle Button -->
+    <button id="randomThemeToggle" class="flash">theme</button>
 
     <script>
+        const toggleButton = document.getElementById('randomThemeToggle');
+        const bodyElement = document.body;
 
-    function setTheme(theme) {
-      const body = document.getElementById('theme-body');
-      body.className = theme; // This removes the previous class and adds the new theme
-    }
-    </script>
+        // List of available themes
+        const themes = [
+            'light-theme',
+            'solarized-light-theme',
+            'monokai-theme',
+            'candy-light-theme',
+            'tomorrow-night-theme'
+        ];
 
-    <!-- Example buttons to change themes -->
-    <button onclick="setTheme('candy-light')">Candy Light</button>
-    <button onclick="setTheme('sunny-day')">Sunny Day</button>
-    <button onclick="setTheme('minty-fresh')">Minty Fresh</button>
+        // Toggle a random theme on button click
+        toggleButton.addEventListener('click', function() {
+            // Remove all existing themes
+            themes.forEach(theme => bodyElement.classList.remove(theme));
+
+            // Pick a random theme
+            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+
+            // Apply the random theme
+            bodyElement.classList.add(randomTheme);
+        });
 
 
-
-
+        function showList() {
+            document.getElementById('list').style.display = 'block';
+            document.getElementById('content').style.display = 'none';
+            document.getElementById('backButton').style.display = 'none';
+        }
     </script>
 
 </body>
