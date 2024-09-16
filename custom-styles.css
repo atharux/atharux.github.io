@@ -8,19 +8,6 @@
     --content-shadow: rgba(0,0,0,0.1);
 }
 
-body {
-    background-color: #282c34; /* Dark background color */
-    color: #abb2bf;           /* Light gray text color */
-    font-family: 'Fira Code', monospace; /* Monospace font typical in code editors */
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #e06c75; /* Titles and headers in a light red/pink */
-}
-
-a {
-    color: #61afef; /* Links in a light blue */
-}
 
 a:hover {
     text-decoration: underline;
