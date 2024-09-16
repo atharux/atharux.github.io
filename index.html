@@ -18,37 +18,69 @@ ul {
 
 /* Light theme */
 body.light-theme {
-  background-color: #f0f0f0;
-  color: #333333;
+  background-color: #fafafa; /* Light background */
+    color: #383a42;           /* Dark gray/black text */
+    font-family: 'Fira Code', monospace;
 }
 
-/* Mint Green & Coral Theme */
-body.mint-green-theme {
-  background-color:##f9f0fb;
-  h1: #37c8b4
-  color: #ff6f61;
+/* Solarized Light theme */
+body.solarized-light-theme {
+  background-color: #fdf6e3; /* Light yellowish background */
+  color: #657b83;            /* Medium gray text */
+  font-family: 'Fira Code', monospace;
 }
 
-/* Lavender & Peach Theme */
-body.lavender-peach-theme {
-  background-color: #b388eb;
-  color: #cb73d9;
-  h1: #81d973
+h1, h2, h3, h4, h5, h6.solarized-light-theme {
+  color: #b58900; /* Gold for headers */
 }
 
-/* Slate & Orange Theme */
-body.slate-orange-theme {
-  background-color: #4e506e;
-  color: #f57b78;
-  h1: #78f2f5
-
+a.solarized-light-theme {
+  color: #268bd2; /* Soft blue links */
 }
 
-/* Pale Pink & Navy Theme */
-body.pale-pink-navy-theme {
-  background-color: #f2d1d1;
-  color: #2c3e50;
-  h1: #7cfafa
+//* monokai-theme theme */
+body.monokai-theme {
+  background-color: #272822; /* Dark gray background */
+  color: #f8f8f2;            /* Light text */
+  font-family: 'Fira Code', monospace;
+}
+
+h1, h2, h3, h4, h5, h6.monokai-theme {
+  color: #f92672; /* Pink headers */
+}
+
+a.monokai-theme {
+  color: #66d9ef; /* Light blue links */
+}
+
+/* Nord Dark theme */
+body.nord-dark-theme {
+  background-color: #2e3440; /* Dark bluish-gray background */
+  color: #d8dee9;            /* Light text */
+  font-family: 'Fira Code', monospace;
+}
+
+h1, h2, h3, h4, h5, h6.nord-dark-theme {
+  color: #81a1c1; /* Soft blue headers */
+}
+
+a.nord-dark-theme {
+  color: #88c0d0; /* Lighter blue links */
+}
+
+/* Tomorrow Night theme */
+body.tomorrow-night-theme {
+  background-color: #1d1f21; /* Very dark gray background */
+  color: #c5c8c6;            /* Light gray text */
+  font-family: 'Fira Code', monospace;
+}
+
+h1, h2, h3, h4, h5, h6.tomorrow-night-theme {
+  color: #cc6666; /* Soft red headers */
+}
+
+a.tomorrow-night-theme {
+  color: #81a2be; /* Soft blue links */
 }
 
 /* Floating button styling */
@@ -159,19 +191,19 @@ body.pale-pink-navy-theme {
         </div>
 
           <!-- Initial Gallery Section -->
-          <h2>Gallery</h2>
+        <div><h3>Work</h3></div>
 
-          <div class="gallery">
+        <div class="gallery">
               <img src="image1.jpg" alt="Image 1" tabindex="0">
               <img src="image2.jpg" alt="Image 2" tabindex="0">
               <img src="image3.jpg" alt="Image 3" tabindex="0">
               <img src="image4.jpg" alt="Image 4" tabindex="0">
               <img src="image5.jpg" alt="Image 5" tabindex="0">
-          </div>
-            </div>
+        </div>
+    </div>
 
     <!-- Random Theme Toggle Button -->
-    <button id="randomThemeToggle" class="flash">new theme</button>
+    <button id="randomThemeToggle" class="flash">theme</button>
 
     <script>
         const toggleButton = document.getElementById('randomThemeToggle');
@@ -180,10 +212,10 @@ body.pale-pink-navy-theme {
         // List of available themes
         const themes = [
             'light-theme',
-            'mint-green-theme',
-            'lavender-peach-theme',
-            'slate-orange-theme',
-            'pale-pink-navy-theme'
+            'solarized-light-theme',
+            'monokai-theme',
+            'nord-dark-theme',
+            'tomorrow-night-theme'
         ];
 
         // Toggle a random theme on button click
