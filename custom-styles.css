@@ -12,10 +12,15 @@
 ul {
     padding-left: 20px;
 }
+
+/* Container styling */
+
 #container {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
+  max-width: 800px;
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
 }
 #container div {
     width: 90%;
