@@ -15,10 +15,12 @@ ul {
 #container {
     width: 100%;
     margin: 0 auto;
+    text-align: center;
 }
 #container div {
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
+    text-align: center;
 }
 
 #content {
